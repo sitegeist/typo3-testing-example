@@ -1,0 +1,67 @@
+{
+    "description": "Start testing your extension NOW - no more excuses",
+    "repositories": [
+        {
+            "type": "path",
+            "url": "Extension/*"
+        }
+    ],
+    "license": "GPL-2.0-or-later",
+    "require": {
+		"php": "7.2.*",
+		"sitegeist/testing-example": "^1.0",
+		"typo3/cms-base-distribution": "^9.5",
+		"vlucas/phpdotenv": "^3.2"
+    },
+    "require-dev": {
+		"editorconfig-checker/editorconfig-checker": "^8.0",
+		"friendsofphp/php-cs-fixer": "^2.12",
+		"phpstan/phpstan": "^0.10.6",
+		"saschaegerer/phpstan-typo3": "^0.10.0",
+		"typo3/testing-framework": "^4.12"
+	},
+    "config": {
+        "bin-dir": "bin",
+        "platform": {
+            "php": "7.2"
+        },
+        "sort-packages": true
+    },
+    "extra": {
+        "typo3/cms": {
+            "web-dir": "Public"
+        },
+        "helhum/typo3-console": {
+            "install-binary": false,
+            "install-extension-dummy": false
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "@typo3-cms-scripts"
+        ],
+        "typo3-cms-scripts": [
+            "./bin/typo3cms install:fixfolderstructure",
+            "./bin/typo3cms install:generatepackagestates"
+        ],
+        "lint": [
+            "@lint:editorconfig",
+            "@lint:php"
+        ],
+        "lint:editorconfig": "./bin/editorconfig-checker ./Extension/*",
+        "lint:php": "./bin/php-cs-fixer fix --dry-run --diff --config ./Build/Testing/.php_cs.php",
+        "fix:php": "./bin/php-cs-fixer fix --diff --config ./Build/Testing/.php_cs.php",
+        "test" : [
+            "@lint",
+            "@test:php"
+        ],
+        "test:php": [
+            "@test:php-static",
+            "@test:php-unit",
+            "@test:php-function"
+        ],
+        "test:php-static": "./bin/phpstan --configuration=./Build/Testing/phpstan.neon analyse --no-progress Extension/ --level=5",
+        "test:php-unit": "./bin/phpunit --color -d memory_limit=-1 -c ./Build/Testing/UnitTests.xml",
+        "test:php-function": "rm -rf typo3temp/var/tests/functional-*; typo3DatabaseName=\"typo3_functional\" typo3DatabaseHost=\"db\" typo3DatabaseUsername=\"root\" typo3DatabasePassword=\"root\" ./bin/phpunit -d memory_limit=-1 --colors -c ./Build/Testing/FunctionalTests.xml"
+    }
+}

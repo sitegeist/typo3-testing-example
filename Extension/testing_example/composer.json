@@ -1,0 +1,23 @@
+{
+    "name": "sitegeist/testing-example",
+    "description": "Exemplary extension to show how easy it is to start automated testing",
+    "license": ["GPL-2.0-or-later"],
+    "type": "typo3-cms-extension",
+    "version": "1.0.0",
+    "authors": [
+        {
+            "name": "Jan Helke",
+            "email": "helke@sitegeist.de"
+        }
+    ],
+    "require": {
+        "typo3/cms-extbase": "^9.5.0",
+        "typo3/cms-core": "^9.5.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Sitegeist\\TestingExample\\": "Classes/",
+            "Sitegeist\\TestingExample\\Tests\\": "Tests/"
+        }
+    }
+}

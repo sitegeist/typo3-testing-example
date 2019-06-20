@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit
+        backupGlobals="true"
+        backupStaticAttributes="false"
+        bootstrap="../../vendor/typo3/testing-framework/Resources/Core/Build/UnitTestsBootstrap.php"
+        convertErrorsToExceptions="true"
+        convertWarningsToExceptions="true"
+        forceCoversAnnotation="false"
+        processIsolation="false"
+        stopOnError="false"
+        stopOnFailure="false"
+        stopOnIncomplete="false"
+        stopOnSkipped="false"
+        verbose="false"
+>
+    <testsuites>
+        <testsuite name="testing_example">
+            <directory>../../Extension/testing_example/Tests/Unit</directory>
+        </testsuite>
+    </testsuites>
+    <filter>
+        <!-- add folders explicitly as some TER extensions throw errors -->
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">../Extension/testing_example/Classes/</directory>
+        </whitelist>
+    </filter>
+</phpunit>

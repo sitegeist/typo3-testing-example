@@ -1,0 +1,6 @@
+/bin/
+/var/
+/vendor/
+/Public/
+!/Public/typo3conf/AdditionalConfiguration.php
+!/Public/typo3conf/LocalConfiguration.php
