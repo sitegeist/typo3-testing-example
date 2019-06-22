@@ -1,20 +1,10 @@
 <?php
 /**
  * This file represents the configuration for Code Sniffing PSR-2-related
- * automatic checks of coding guidelines
- * Install @fabpot's great php-cs-fixer tool via
+ * automatic checks of coding guidelines.
  *
- *  $ composer global require friendsofphp/php-cs-fixer
- *
- * And then simply run
- *
- *  $ php-cs-fixer fix --config ../Build/.php_cs
- *
- * inside the TYPO3 directory. Warning: This may take up to 10 minutes.
- *
- * For more information read:
- *     https://www.php-fig.org/psr/psr-2/
- *     https://cs.sensiolabs.org
+ * This configuration is basically taken from the current TYPO3 core and only the search
+ * folders are customized.
  */
 if (PHP_SAPI !== 'cli') {
     die('This script supports command line usage only. Please check your command.');

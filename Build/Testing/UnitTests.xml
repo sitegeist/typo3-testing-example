@@ -14,12 +14,13 @@
         verbose="false"
 >
     <testsuites>
+		<!-- add every extension you want to test in one batch here as own directory -->
         <testsuite name="testing_example">
             <directory>../../Extension/testing_example/Tests/Unit</directory>
         </testsuite>
     </testsuites>
     <filter>
-        <!-- add folders explicitly as some TER extensions throw errors -->
+        <!-- add directories explicitly as some TER extensions throw errors -->
         <whitelist processUncoveredFilesFromWhitelist="true">
             <directory suffix=".php">../Extension/testing_example/Classes/</directory>
         </whitelist>
